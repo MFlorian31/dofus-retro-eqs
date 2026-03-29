@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stuff Feu Niv. 60 - En Quête de Succès</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="images/LogoDR.png" alt="Logo Dofus Rétro"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="skin.html">Skin</a></li>
+            
+            <li class="dropdown">
+                <a href="index-stuffs.html" class="dropbtn">Stuffs <span class="arrow">▼</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="stuff-20.html">Stuff 20</a></li>
+                    <li><a href="stuff-60.html">Stuff 60</a></li>
+                    <li><a href="stuff-80.html">Stuff 80</a></li>
+                    <li><a href="stuff-105.html">Stuff 105</a></li>
+                    <li><a href="stuff-130.html">Stuff 130</a></li>
+                    <li><a href="stuff-145.html">Stuff 145</a></li>
+                    <li><a href="stuff-165.html">Stuff 165</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="index-familiers.html" class="dropbtn">Familiers <span class="arrow">▼</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="encyclopedie-familiers.html">Encyclopédie</a></li>
+                    <li><a href="elevage-familiers.html">Élevage</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="stuff-page">
+        <h2>Stuff Cra Feu - Niveau 60</h2>
+        
+        <div class="stuff-grid-container">
+
+            <div class="item-slot slot-1"> 
+                <img src="images/items/60/BouclierEnMousse.png" alt="Bouclier en Mousse">
+                <span class="item-tooltip">
+                    Bouclier en Mousse (lvl 1)
+                </span>
+            </div>
+
+            <div class="item-slot slot-2"> 
+                <img src="images/items/60/ExcellentBatonDesRois.png" alt="Excellent Bâton des Rois">
+                <span class="item-tooltip">
+                    Excellent Bâton des Rois (lvl 60)
+                    <img src="images/icon-hammer.png" class="hammer-btn" alt="Ajouter au craft" onclick="addToCraft('Excellent Bâton des Rois', event)">
+                </span>
+            </div>
+
+            <div class="item-slot slot-3"> 
+                <img src="images/items/60/AmublopGriotte.png" alt="Amublop Griotte">
+                <span class="item-tooltip">
+                    Amublop Griotte (lvl 50)
+                    <img src="images/icon-hammer.png" class="hammer-btn" alt="Ajouter au craft" onclick="addToCraft('Amublop Griotte', event)">
+                </span>
+            </div>
+
+            <div class="item-slot slot-4"> 
+                <img src="images/items/60/BlopanneauGriotte.png" alt="Blopanneau Griotte">
+                <span class="item-tooltip">
+                    Blopanneau Griotte (lvl 50)
+                    <img src="images/icon-hammer.png" class="hammer-btn" alt="Ajouter au craft" onclick="addToCraft('Blopanneau Griotte', event)">
+                </span>
+            </div>
+
+            <div class="item-slot slot-5"> 
+                <img src="images/items/60/BloptureGriotte.png" alt="Blopture Griotte">
+                <span class="item-tooltip">
+                    Blopture Griotte (lvl 50)
+                    <img src="images/icon-hammer.png" class="hammer-btn" alt="Ajouter au craft" onclick="addToCraft('Blopture Griotte', event)">
+                </span>
+            </div>
+
+            <div class="item-slot slot-6"> 
+                <img src="images/items/60/Gelano.png" alt="Gelano">
+                <span class="item-tooltip">
+                    Gelano (lvl 60)
+                    <img src="images/icon-hammer.png" class="hammer-btn" alt="Ajouter au craft" onclick="addToCraft('Gelano', event)">
+                </span>
+            </div>
+            
+            <div class="item-slot slot-7"> 
+                <img src="images/items/60/BloptesGriottes.png" alt="Bloptes Griottes">
+                <span class="item-tooltip">
+                    Bloptes Griottes (lvl 50)
+                    <img src="images/icon-hammer.png" class="hammer-btn" alt="Ajouter au craft" onclick="addToCraft('Bloptes Griottes', event)">
+                </span>
+            </div>  
+
+            <div class="item-slot slot-8"> 
+                <img src="images/items/60/Caracoiffe.png" alt="Caracoiffe">
+                <span class="item-tooltip">
+                    Caracoiffe (lvl 60)
+                    <img src="images/icon-hammer.png" class="hammer-btn" alt="Ajouter au craft" onclick="addToCraft('Caracoiffe', event)">
+                </span>
+            </div>   
+            
+            <div class="item-slot slot-9"> 
+                <img src="images/items/60/CapeHote.png" alt="Cape Hôte">
+                <span class="item-tooltip">
+                    Cape Hôte (lvl 58)
+                    <img src="images/icon-hammer.png" class="hammer-btn" alt="Ajouter au craft" onclick="addToCraft('Cape Hôte', event)">
+                </span>
+            </div>
+            
+            <div class="item-slot slot-10"> 
+                <img src="images/items/20/Chienchien.png" alt="Chienchien">
+                <span class="item-tooltip">Chienchien (lvl 1)</span>
+            </div>
+        </div>
+    </section>
+
+    <div id="craft-container" class="craft-info">
+    <h3>
+        Ma liste de crafts
+        
+        <img src="images/trash.png" 
+             class="trash-icon" 
+             alt="Vider la liste" 
+             onclick="clearCraft()" 
+             title="Vider toute la liste ?">
+    </h3>
+    <p id="craft-placeholder">Cliquez sur les marteaux des items pour planifier votre craft...</p>
+    <ul id="ingredient-list"></ul>
+</div>
+
+    <div id="total-resources-container"></div> 
+
+</main>
+
+    <footer>
+    </footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
