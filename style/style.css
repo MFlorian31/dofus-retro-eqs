@@ -1,0 +1,1415 @@
+/* Style général */
+body {
+    font-family: 'Montserrat', sans-serif; /* Montserrat partout pour la cohérence */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #021b08; /* Ta nouvelle couleur sombre */
+    color: #ecf0f1;           /* Un blanc cassé très lisible pour le texte */
+}
+
+/* Uniformisation des titres */
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ecf0f1;           /* Titres en clair également */
+    margin-top: 0;
+}
+
+/* En-tête */
+header {
+    background: #1c1715;
+    color: #fff;
+    padding: 0.5rem 5%; /* Augmenté à 5% pour donner de l'air sur les côtés */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+/* La barre de navigation devient le conteneur principal */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Pousse le logo à gauche et la liste à droite */
+    align-items: center;           /* Aligne parfaitement le texte et le logo verticalement */
+    min-height: 80px;              /* Donne une hauteur minimale harmonieuse */
+}
+
+/* On force la taille du logo */
+.logo img {
+    height: 80px;       /* Ajuste cette valeur selon tes goûts */
+    width: auto;        /* Garde les proportions de ton image */
+    display: block;     /* Enlève l'espace vide sous l'image */
+}
+
+/* Style de la liste de liens */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;         /* CRUCIAL : enlève le décalage par défaut des listes */
+    display: flex;      /* Met les liens les uns à côté des autres */
+}
+
+.nav-links li {
+    margin-left: 30px;  /* Espace entre les onglets */
+}
+
+.nav-links a {
+    color: #ee8331;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.4s ease;
+}
+
+.nav-links a:hover {
+    color: #f0b200;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Titre Hero */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(28, 23, 21, 0.6); /* Fond sombre semi-transparent */
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #f0b200;
+    font-weight: 800; 
+    letter-spacing: -1px; 
+    
+    /* Taille fluide : 
+       Minimum 1.5rem, 
+       Idéal 3.5% de la largeur de l'écran (vw), 
+       Maximum 3rem */
+    font-size: clamp(1.5rem, 3.5vw, 3rem); 
+    
+    margin-bottom: 10px;
+    line-height: 1.2; /* Resserre aussi l'espace entre les lignes si ça déborde */
+    text-align: center;
+}
+
+/* La Grille */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colonnes automatiques */
+    gap: 20px; /* Espace entre les cartes */
+}
+
+/* Style des cartes */
+.card {
+    background: rgba(28, 23, 21, 0.8); /* Fond sombre semi-transparent */
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid #ee8331;
+    color: #ecf0f1; /* Assure-toi que le texte interne est clair */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* La carte "saute" un peu au survol */
+    background: rgba(28, 23, 21, 1); /* Devient opaque au survol */
+    box-shadow: 0 15px 30px rgba(238, 131, 49, 0.3); /* Ombre orangée */
+}
+
+/* Cibler les images spécifiques dans les icônes de cartes */
+.card-icon img {
+    height: 80px;      /* Force une hauteur identique pour toutes */
+    width: auto;       /* Garde le ratio de l'image pour ne pas l'écraser */
+    max-width: 100%;   /* Sécurité pour ne pas déborder de la carte */
+    object-fit: contain; /* S'assure que l'image est entière dans l'espace imparti */
+    margin-bottom: 10px;
+}
+
+/* Ajustement du conteneur d'icône pour bien centrer */
+.card-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;     /* Espace réservé à l'icône */
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+    color: #ee8331; /* Titres de cartes en orange */
+}
+
+/* Style des boutons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ee8331;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #1c1715;
+}
+
+/* Page Skin spécifique */
+.skin-display {
+    text-align: center;
+    background: rgba(28, 23, 21, 0.6); /* Fond sombre semi-transparent */
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+
+.skin-display h2 {
+    color:#ee8331;
+    font-weight: 800; 
+    letter-spacing: -0.5px; 
+}
+
+.skin-display h3{
+    color:#f0b200;
+    font-weight: 500;
+}
+
+.skin-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 25px; /* Bords arrondis comme demandé */
+    border: 3px solid #ee8331; /* Un petit rappel orange pour le cadre */
+    margin-bottom: 30px;
+}
+
+/* Grille des couleurs */
+.color-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Pour que ça passe sur deux lignes sur petit écran */
+}
+
+.color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.color-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+}
+
+.color-box:hover {
+    transform: scale(1.1); /* Petit effet de zoom au survol */
+}
+
+/* Zone de texte copiable */
+.hex-code {
+    background: #1c1715;
+    color:#f0b200;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-family: monospace; /* Police style "code" */
+    font-size: 0.9rem;
+    user-select: all; /* Permet de sélectionner tout le texte en un clic */
+    cursor: pointer; /* Change la flèche de la souris en petite main */
+}
+
+/* Style du parent Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.arrow {
+    font-size: 0.7rem;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Le contenu du menu (caché par défaut) */
+.dropdown-content {
+display: none;
+    position: absolute;
+    /* On passe sur du RGBA : 0.85 signifie 85% d'opacité */
+    background-color: rgba(42, 36, 34, 0.85); 
+    
+    /* Effet de flou derrière le menu (très esthétique) */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Compatibilité Safari */
+
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+    z-index: 1000;
+    border-radius: 10px 10px 10px 10px;
+    top: 100%;
+    right: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style des liens à l'intérieur du menu */
+.dropdown-content li {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 5px 18px;
+    color: rgba(238, 131, 49, 0.8);
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+/* Changement de couleur au survol d'un item du menu */
+.dropdown-content a:hover {
+    color: rgba(240, 178, 0, 0.8);
+}
+
+.dropbtn::after {
+    display: none !important;
+}
+
+/* AFFICHER le menu au survol */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Garder le lien principal orange quand on survole le menu */
+.dropdown:hover .dropbtn {
+    color: #f0b200;
+}
+
+/* Page Stuff Spécifique */
+.stuff-page {
+    text-align: center;
+    background: rgba(28, 23, 21, 0.6);
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+
+.container h2{
+    color:#ee8331
+}
+/* LE CONTENEUR PRINCIPAL */
+.stuff-grid-container {
+    width: 100%;
+    max-width: 800px; /* Taille idéale pour ton image */
+    aspect-ratio: 850 / 500; /* Garde les proportions de ton image */
+    background-image: url('../images/BaseStuff.png');
+    background-size: cover;
+    position: relative;
+    margin: 20px auto;
+    border: 2px solid #ee8331;
+    border-radius: 10px;
+}
+
+/* STYLE GÉNÉRAL DES SLOTS D'ITEMS */
+.item-slot {
+    position: absolute;
+    width: 11%;  /* Largeur d'une case par rapport à l'image */
+    height: 18%; /* Hauteur d'une case par rapport à l'image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-name {
+    color: #000;
+    font-weight: 800;
+    font-size: 1rem;
+    flex: 1; /* Force le nom à prendre tout l'espace libre à gauche */
+    line-height: 1.2;
+}
+
+/* STYLE DE L'IMAGE DE L'ITEM DANS LE SLOT */
+.item-slot img {
+    max-width: 90%; /* S'assure que l'item ne touche pas les bords de la case */
+    max-height: 90%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8)); /* Petite ombre sous l'item */
+    transition: transform 0.2s;
+}
+
+.item-slot img:hover {
+    transform: scale(1.1); /* Zoom discret au survol */
+}
+
+/* TOOLTIP (INFOBULLE AU SURVOL) */
+.item-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    /* On le place un peu plus près pour éviter le vide */
+    bottom: 82%; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-color: #1c1715;
+    color: #f0b200;
+    padding: 10px 15px;
+    /* Ce padding est CRUCIAL : il crée une zone invisible entre l'item et le texte */
+    border-bottom: 8px solid transparent; 
+    
+    border-radius: 8px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 100;
+    transition: opacity 0.2s;
+    
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    align-items: center;    /* Centre horizontalement le texte et le marteau */
+    gap: 8px;              /* Espace entre le nom et le marteau */
+    pointer-events: auto;
+}
+
+/* On s'assure que si on survole le slot OU le tooltip lui-même, il reste affiché */
+.item-slot:hover .item-tooltip,
+.item-tooltip:hover {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Style du bouton marteau pour qu'il soit bien visible */
+.hammer-btn {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    filter: sepia(1) saturate(5); /* Le rend un peu plus "doré" */
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.hammer-btn:hover {
+    transform: scale(1.2);
+    filter: brightness(1.5);
+}
+
+/* --- COLONNE DOFUS (12 à 17) --- */
+.slot-12 { top: 8.3%;  left: 2.9%; width: 14%; height: 11%;}
+.slot-13 { top: 22.7%; left: 2.9%; width: 14%; height: 11%;}
+.slot-14 { top: 35%; left: 5.5%; }
+.slot-15 { top: 50%; left: 5.5%; }
+.slot-16 { top: 64%; left: 5.5%; }
+.slot-17 { top: 78%; left: 5.5%; }
+
+/* --- ÉQUIPEMENTS CENTRAUX --- */
+.slot-1  { top: 7%;   left: 21%; width: 14%; height: 21%; } /* Bouclier */
+.slot-2  { top: 7%;   left: 63%;   width: 14%; height: 22%; } /* CAC */
+.slot-3  { top: 14%;  left: 43%;   width: 11%; height: 14%; } /* Amulette */
+.slot-4  { top: 35.5%;  left: 22.5%;  width: 11%; height: 13%; } /* Anneau G */
+.slot-5  { top: 32.5%;  left: 40%;   width: 17%; height: 25%; } /* Ceinture */
+.slot-6  { top: 36.3%;  left: 64.7%;  width: 11%; height: 13%; } /* Anneau D */
+.slot-7  { top: 65.5%;  left: 40.5%;   width: 16%; height: 25%; } /* Bottes */
+.slot-8  { top: 6%;   left: 83%; width: 14%; height: 22%; } /* Coiffe */
+.slot-9  { top: 28%;  left: 83%; width: 14%; height: 22%; } /* Cape */
+.slot-10 { top: 49.5%;  left: 83%; width: 14%; height: 22%; } /* Familier */
+.slot-11 { top: 72%;  left: 83.5%; width: 14%; height: 22%; } /* Dragodinde */
+
+.craft-info {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(28, 23, 21, 0.9);
+    border: 2px dashed #ee8331; /* Effet pointillé style "plan de craft" */
+    border-radius: 10px;
+    min-height: 120px;
+    text-align: left;
+}
+
+.craft-info h3 {
+    margin-top: 0;
+    color: #f0b200;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between; /* Pousse le texte à gauche et l'icône à droite */
+    align-items: center;
+}
+
+.trash-icon {
+    width: 24px;   /* Taille idéale pour une icône de titre */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+    
+    /* Petite ombre pour la profondeur */
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5)); 
+}
+
+.trash-icon:hover {
+    transform: scale(1.1) rotate(-10deg); /* Légère rotation fun */
+    filter: brightness(1.2) drop-shadow(0 3px 5px rgba(238, 131, 49, 0.6)); /* Lueur orange */
+}
+
+.hammer-icon {
+    width: 25px;
+    height: auto;
+}
+
+#ingredient-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+    gap: 20px;
+    width: 100%;       /* S'assure de prendre toute la largeur */
+    padding: 0;        /* Enlève les paddings qui pourraient décaler à gauche */
+    margin: 0 auto;    /* Centre le bloc complet si besoin */
+    justify-items: stretch; /* Force les cartes à prendre toute la largeur de leur colonne */
+}
+
+#ingredient-list li {
+    font-size: 0.95rem;
+}
+
+/* La carte d'un item à craft */
+.craft-card {
+    background: #2a2422;
+    border: 1.5px solid #ee8331; /* La bordure principale unique */
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Un léger relief pour le côté moderne */
+}
+
+.card-header {
+    background-color: #ee8331;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between; /* Pousse les deux blocs aux extrémités */
+    align-items: center; /* Aligne tout le monde sur la même ligne horizontale */
+    gap: 10px;
+}
+
+.remove-card {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: rgba(0,0,0,0.6);
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.remove-card:hover {
+    color: #000;
+}
+
+.card-body {
+    background-color: #2a221e;
+    padding: 12px 15px;
+    /* Suppression de toute bordure ici pour ne pas doubler celle de .craft-card */
+    border: none !important; 
+}
+
+/* Ligne de ressource */
+.ing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    /* On garde cette ligne très discrète pour séparer les ingrédients */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+}
+
+.ing-name { color: #ecf0f1; }
+
+.ing-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ing-controls input {
+    background: transparent;
+    border: 1px solid #ee8331;
+    color: #ffb133;
+    border-radius: 4px;
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.qty-total {
+    color: #888;
+    min-width: 35px;
+}
+
+.remove-ing {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    filter: grayscale(1);
+}
+
+.remove-ing:hover { filter: none; }
+
+.clear-btn {
+    font-size: 0.7rem;
+    background: #ee8331;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+/* Quand la quantité possédée est égale ou supérieure à la requise */
+.ing-row.completed .ing-name {
+    color: #2ecc71; /* Vert Dofus */
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.ing-row:last-child {
+    border-bottom: none; /* Pas de ligne pour le dernier élément */
+}
+
+.ing-row.completed input {
+    border-color: #2ecc71;
+    color: #2ecc71;
+}
+
+.total-resources-card {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(28, 23, 21, 0.9);
+    border: 2px dashed #ee8331; /* Bordure orange pointillée comme la liste de craft */
+    border-radius: 10px;
+    text-align: left;
+}
+
+.total-resources-card h3 {
+    margin-top: 0;
+    color: #f0b200; 
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.total-item {
+    background: rgba(42, 36, 34, 0.5);
+    border-left: 3px solid #ee8331; /* Le trait vertical orange à gauche */
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.total-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.res-name {
+    white-space: wrap;      /* Force le texte sur une seule ligne */
+    max-width: 180px;         /* Ajuste selon tes besoins */
+    display: inline-block;
+}
+
+.res-qty { 
+    color: #f0b200; 
+    font-weight: 600;
+}
+
+/* Barre de progression */
+.progress-bar {
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ee8331, #f0b200);
+    transition: width 0.3s ease;
+}
+
+.all-done {
+    border-left-color: #2ecc71;
+    opacity: 0.8;
+}
+
+.all-done .progress-fill {
+    background: #2ecc71;
+}
+
+/* --- Page de Sélection des Niveaux --- */
+.selection-section {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(28, 23, 21, 0.6); /* Fond sombre semi-transparent */
+    border-radius: 20px;
+    margin-top: 40px;
+}
+
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Style de la Card */
+.level-card {
+    background: rgba(28, 23, 21, 0.95);
+    border: 2px solid #3d3531;
+    border-radius: 15px;
+    padding: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level-card:hover {
+    border-color: #ee8331;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Badge de niveau en haut à droite */
+.level-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ee8331;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.level-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(238, 131, 49, 0.2));
+}
+
+.level-card h3 {
+    color: #ee8331;
+    margin: 10px 0;
+}
+
+.level-card p {
+    color: #ecf0f1;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Bouton factice dans la card */
+.btn-select {
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid #ee8331;
+    color: #ee8331;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.level-card:hover .btn-select {
+    background: #ee8331;
+    color: white;
+}
+
+.sub-craft-btn {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    line-height: 16px;
+    text-align: center;
+    background: #ee8331;
+    color: white;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: 0.2s;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.sub-craft-btn:hover {
+    background: #f0b200;
+    transform: scale(1.2);
+}
+
+/* Optionnel : cacher le bouton quand la ligne est complétée */
+.ing-row.completed .sub-craft-btn {
+    display: none;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* L'espacement (padding) entre le multiplicateur et la croix */
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.multiplier-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Empêche le "x" de sauter à la ligne */
+}
+
+.mult-prefix {
+    color: #ee8331;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-right: 2px;
+}
+
+.mult-input {
+    width: 30px !important;
+    border: none !important;
+    background: transparent !important;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+}
+
+.mult-input::-webkit-outer-spin-button,
+.mult-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* On remet les flèches pour que l'utilisateur comprenne qu'il peut cliquer */
+.mult-input::-webkit-inner-spin-button { 
+  opacity: 1;
+}
+
+.index-fam-card {
+    background: rgba(28, 23, 21, 0.95);
+    border: 2px solid #3d3531;
+    border-radius: 15px;
+    padding: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.index-fam-card:hover {
+    border-color: #ee8331;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.index-fam-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(238, 131, 49, 0.2));
+}
+
+.index-fam-card h3 {
+    color: #ee8331;
+    margin: 10px 0;
+}
+
+.index-fam-card p {
+    color: #ecf0f1;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.index-fam-card:hover .btn-select {
+    background: #ee8331;
+    color: white;
+}
+
+/* Grille de l'encyclopédie */
+.pets-grid {
+    display: grid;
+    /* On définit 3 colonnes de taille égale */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    margin-top: 30px;
+    /* CRUCIAL : empêche les cartes de s'étirer verticalement */
+    align-items: start; 
+    contain: layout;
+}
+
+/* Carte Familier */
+.pet-card {
+    background: rgba(42, 36, 34, 0.6);
+    border: 1px solid #3d3531;
+    border-radius: 12px;
+    padding: 10px 15px; /* Réduit le padding vertical */
+    transition: 0.3s;
+    text-align: left;
+    /* On enlève le height: 100% qui forçait l'épaisseur inutile */
+    height: auto; 
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    opacity: 1;
+    transform: scale(1);
+    display: block; /* On s'assure qu'elles sont en block */
+}
+
+.pet-card.hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    visibility: hidden;
+    /* On utilise pointer-events pour éviter de cliquer sur une carte invisible */
+    pointer-events: none;
+    /* Pour que la grille se resserre quand même, on réduit la taille à 0 après l'anim */
+    position: absolute; 
+    z-index: -1;
+}
+
+.pet-card:hover {
+    border-color: #ee8331;
+    transform: translateY(-5px);
+    background: rgba(42, 36, 34, 0.9);
+}
+
+.pet-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0; /* On enlève le padding interne du header */
+    height: 60px; /* On fixe une hauteur constante pour l'alignement visuel */
+}
+
+.pet-header img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.pet-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #ee8331;
+}
+
+.pet-info p {
+    font-size: 0.85rem;
+    margin: 5px 0;
+    color: #ecf0f1;
+}
+
+.pet-info .bonus {
+    color: #f0b200;
+    font-weight: bold;
+}
+
+/* Style de la barre de recherche */
+.search-container {
+    margin: 20px 0;
+}
+
+#petSearch {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 20px;
+    background: #1c1715;
+    border: 1px solid #ee8331;
+    border-radius: 25px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+}
+
+/* Titres de sections internes à la carte */
+.info-section h4 {
+    color: #f0b200; /* Jaune Dofus pour les sous-titres */
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 15px 0 8px 0;
+    border-bottom: 1px solid rgba(238, 131, 49, 0.2);
+    padding-bottom: 4px;
+}
+
+/* Listes de stats */
+.stats-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stats-list li {
+    font-weight: bold;
+    padding: 2px 0;
+}
+
+/* Blocs de nourriture (style image jointe) */
+.food-block {
+    background: rgba(0, 0, 0, 0.2); /* Un fond légèrement plus sombre pour détacher le bloc */
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.food-target {
+    font-size: 0.85rem;
+    margin-bottom: 4px !important;
+}
+
+.food-items {
+    font-size: 0.8rem;
+    color: #bdc3c7; /* Gris clair pour les listes de ressources */
+    font-style: italic;
+    margin: 0 !important;
+}
+
+/* Grille pour les petits détails en bas de carte */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.details-grid p {
+    font-size: 0.8rem;
+    margin-top: -5px;
+}
+
+/* Cache la petite flèche noire par défaut de Google/Safari */
+.obtention-details summary::-webkit-details-marker {
+    display: none;
+}
+.obtention-details summary {
+    list-style: none;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Style du titre dans le summary */
+.obtention-details h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0; /* Évite un saut quand c'est fermé */
+}
+
+/* Le texte masqué */
+.obtention-details p {
+    font-size: 0.8rem;
+    color: #bdc3c7;
+    padding: 10px 5px;
+    margin: 0;
+    line-height: 1.4;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+/* Animation de la flèche */
+.arrow-toggle {
+    transition: transform 0.3s ease;
+    display: inline-block;
+    color: #ee8331;
+}
+
+/* Rotation de la flèche quand c'est ouvert */
+.obtention-details[open] .arrow-toggle {
+    transform: rotate(180deg);
+}
+
+/* Petit ajustement pour que le bord inférieur ne soit pas collé */
+.obtention-details[open] h4 {
+    border-bottom: 1px dashed rgba(238, 131, 49, 0.4);
+    margin-bottom: 8px;
+}
+
+.pet-accordion summary {
+    list-style: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.pet-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.main-arrow {
+    margin-left: auto; /* Pousse la flèche tout à droite */
+    color: #ee8331;
+    transition: transform 0.3s;
+}
+
+.pet-accordion[open] .main-arrow {
+    transform: rotate(180deg);
+}
+
+.pet-accordion[open] .pet-header {
+    border-bottom: 2px solid rgba(238, 131, 49, 0.3);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.pet-content-wrapper {
+    animation: slideDown 0.3s ease-out;
+    padding-top: 10px;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lien-quêtes:link,
+.lien-quêtes:visited,
+.lien-quêtes:active {
+    color: #f0b200;              /* couleur fixe */
+    text-decoration: none;   /* enlève le soulignement */
+}
+
+.lien-quêtes:hover{
+    color: #ee8331;
+}
+
+.lien-quêtes {
+    transition: color 0.3s ease; /* durée + effet */
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+    background: rgba(42, 36, 34, 0.6);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #3d3531;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    text-align: left;
+    font-size: clamp(0.75rem, 1vw, 0.95rem);
+}
+
+th {
+    color: #ee8331;
+    border-bottom: 2px solid #ee8331;
+    padding: 12px;
+    text-align: center;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(238, 131, 49, 0.1);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.pet-select {
+    width: 80%; /* Pour ne pas qu'il soit trop large une fois centré */
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #fff;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.pet-select, .stat-select, .food-select, .last-fed, .food-display {
+    background: #1c1715;
+    border: 1px solid #3d3531;
+    color: white;
+    padding: 6px 4px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 180px; /* Optionnel : évite que les champs soient trop larges sur grand écran */
+    text-align: center; /* Centre le texte à l'intérieur du champ */
+    margin: 0 auto; /* Centre le bloc dans la cellule */
+    display: block;
+    font-size: inherit;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.last-fed {
+    min-width: 120px; /* Empêche l'input de s'écraser totalement */
+    font-size: 0.8rem;
+}
+
+input[type="datetime-local"] {
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.btn-add {
+    background: #ee8331;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-add:hover { background: #f0b200; }
+
+.btn-delete {
+    width: 18px;       /* Taille idéale pour une icône de tableau */
+    height: auto;      /* Garde les proportions */
+    cursor: pointer;   /* Change le curseur en main */
+    transition: transform 0.2s, filter 0.2s;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5)); 
+}
+
+.btn-delete:hover {
+    transform: scale(1.1) rotate(-10deg); /* Légère rotation fun */
+    /* Lueur orange pour indiquer l'action (conforme à ton thème) */
+    filter: brightness(1.2) drop-shadow(0 3px 5px rgba(238, 131, 49, 0.6)); 
+}
+
+.next-fed {
+    color: rgba(231, 76, 60, 0.5); /* Rouge doux et transparent */
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* État : C'est l'heure ! (Vert clignotant) */
+.next-fed.ready {
+    color: #2ecc71; /* Vert Dofus bien visible */
+    text-shadow: 0 0 5px rgba(46, 204, 113, 0.4);
+    animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-green {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.action-cell {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Mode "Écran Moyen" ou "Demi-écran" (Tablette / Fenêtre réduite) */
+@media screen and (max-width: 1000px) {
+    th, td {
+        padding: 8px 4px; /* On réduit l'espace interne */
+    }
+
+    .table-container {
+        padding: 5px;
+    }
+    
+    /* On réduit un peu la taille de l'image poubelle */
+    .btn-delete {
+        width: 16px;
+    }
+}
+
+/* Mode "Petit Écran" (Mobile / Fenêtre très étroite) */
+@media screen and (max-width: 600px) {
+    thead { display: none; }
+    
+    tr {
+        display: flex;
+        flex-direction: column;
+        background: #2a2a2a;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 10px;
+        border-left: 5px solid #2ecc71;
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border: none !important;
+    }
+
+    /* On ajoute des labels devant les infos car on n'a plus l'en-tête */
+    td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #888;
+    }
+}
+
+.pet-name-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.pet-icon-mini {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    display: none; /* Caché par défaut tant qu'aucun familier n'est choisi */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Grille spécifique à l'élevage */
+.breeding-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+/* Carte d'élevage */
+.breeding-card {
+    background: rgba(40, 40, 40, 0.95);
+    border: 2px solid #444;
+    border-radius: 15px;
+    padding: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.breeding-card:hover {
+    transform: translateY(-3px);
+}
+
+/* On intensifie le halo quand on survole la carte */
+.breeding-card:hover .breeding-icon {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+}
+
+.breeding-icon.is-loaded {
+    visibility: visible;
+    opacity: 1; /* L'image (et son halo) apparaissent ! */
+}
+
+.breeding-card-header {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+    position: relative; 
+    
+    min-height: 120px; /* Force une hauteur minimale pour le header */
+}
+
+.breeding-title-group {
+    width: 100%;
+    text-align: center;
+}
+
+.breeding-icon {
+    width: 80px; 
+    height: 80px;
+    object-fit: contain;
+    background: none;
+    border: none;
+    transition: filter 0.3s ease;
+    
+    /* Le halo lumineux autour du familier */
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.2)); 
+
+    /* ON AJOUTE CES LIGNES : */
+    visibility: hidden; /* Prépare l'animation ou le changement */
+    opacity: 0;         /* Cache totalement l'image (et l'icône cassée) */
+    transition: opacity 0.3s ease, visibility 0.3s ease, filter 0.3s ease; /* Ajoute une transition fluide */
+}
+
+.breeding-row-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+/* Le bouton "Nourrir maintenant" */
+.breeding-btn-now {
+    background: #3d3d3d;
+    border: 1px solid #555;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.breeding-btn-now:hover {
+    background: #2ecc71;
+    transform: scale(1.1);
+}
+
+/* Status "Prêt" clignotant */
+.next-fed.ready {
+    color: #2ecc71;
+    font-weight: 800;
+    text-shadow: 0 0 8px rgba(46, 204, 113, 0.6);
+    animation: breeding-pulse 2s infinite;
+}
+
+@keyframes breeding-pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+.breeding-btn-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 18px;
+    opacity: 0.4;
+}
+
+.breeding-btn-delete:hover { 
+    opacity: 1;          /* 100% opaque au survol */
+    transform: scale(1.1); /* S'agrandit légèrement */
+}

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevage Familiers - En Quête de Succès</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="images/LogoDR.png" alt="Logo Dofus Rétro"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="skin.html">Skin</a></li>
+            
+            <li class="dropdown">
+                <a href="index-stuffs.html" class="dropbtn">Stuffs <span class="arrow">▼</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="stuff-20.html">Stuff 20</a></li>
+                    <li><a href="stuff-60.html">Stuff 60</a></li>
+                    <li><a href="stuff-80.html">Stuff 80</a></li>
+                    <li><a href="stuff-105.html">Stuff 105</a></li>
+                    <li><a href="stuff-130.html">Stuff 130</a></li>
+                    <li><a href="stuff-145.html">Stuff 145</a></li>
+                    <li><a href="stuff-165.html">Stuff 165</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="index-familiers.html" class="dropbtn">Familiers <span class="arrow">▼</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="encyclopedie-familiers.html">Encyclopédie</a></li>
+                    <li><a href="elevage-familiers.html">Élevage</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="selection-section">
+        <h2 class="main-title">Gestion de l'Élevage</h2>
+        <p class="subtitle">Planifiez vos repas pour optimiser la croissance de vos familiers.</p>
+
+        <div class="breeding-controls">
+            <button id="addPetRow" class="btn-add">Ajouter un familier à élever</button>
+        </div>
+
+        <div id="breedingBody" class="breeding-grid">
+        </div>
+    </section>
+</main>
+
+<script>
+// 1. Tes données (Tu peux en ajouter d'autres ici)
+const petData = {
+    "Atouin": { 
+        imageName: "Atouin",
+        interval: 5, 
+        stats: ["Soins", "Dommages"], 
+        food: { 
+            "Soins": ["Poisson", "Poisson comestible", "Poisson vidé"],
+            "Dommages": ["Viande", "Viande conservée", "Viande comestible"]
+        } 
+    },
+    "Bwak d'Air": { 
+        imageName: "BwakDAir",
+        interval: 11, 
+        stats: ["Agilité", "Vie", "Résistance Air"], 
+        food: { 
+            "Agilité": ["Graine de Sésame", "Graine de Tournesol sauvage", "Graine de Pavot", "Graine de Lin", "Graine de Chanvre"],
+            "Vie": ["Fraise", "Gland", "Noisette"],
+            "Résistance Air": ["Noix de Cajou", "Noix de Pécan"]
+        } 
+    },
+    "Bwak d'Eau": { 
+        imageName: "BwakDEau",
+        interval: 11, 
+        stats: ["Chance", "Vie", "Résistance Eau"], 
+        food: { 
+            "Chance": ["Graine de Sésame", "Graine de Tournesol sauvage", "Graine de Pavot", "Graine de Lin", "Graine de Chanvre"],
+            "Vie": ["Fraise", "Gland", "Noisette"],
+            "Résistance Eau": ["Noix de Cajou", "Noix de Pécan"]
+        } 
+    },
+    "Bwak de Feu": { 
+        imageName: "BwakDeFeu",
+        interval: 11, 
+        stats: ["Intelligence", "Vie", "Résistance Feu"], 
+        food: { 
+            "Intelligence": ["Graine de Sésame", "Graine de Tournesol sauvage", "Graine de Pavot", "Graine de Lin", "Graine de Chanvre"],
+            "Vie": ["Fraise", "Gland", "Noisette"],
+            "Résistance Feu": ["Noix de Cajou", "Noix de Pécan"]
+        } 
+    },
+    "Bwak de Terre": { 
+        imageName: "BwakDeTerre",
+        interval: 11, 
+        stats: ["Force", "Vie", "Résistance Terre"], 
+        food: { 
+            "Force": ["Graine de Sésame", "Graine de Tournesol sauvage", "Graine de Pavot", "Graine de Lin", "Graine de Chanvre"],
+            "Vie": ["Fraise", "Gland", "Noisette"],
+            "Résistance Terre": ["Noix de Cajou", "Noix de Pécan"]
+        } 
+    },
+    "Bworky": { 
+        imageName: "Bworky",
+        interval: 5, 
+        stats: ["Pods"], 
+        food: { 
+            "Pods": ["Noix de Cajou", "Noix de Pécan", "Gland", "Noisette"],
+        } 
+    },
+    "Chacha": { 
+        imageName: "Chacha",
+        interval: 5, 
+        stats: ["Agilité", "Force", "Intelligence", "Vie", "Chance", "Résistance Neutre"], 
+        food: { 
+            "Agilité": ["Plume de Tofu", "Oeuf de Tofu", "Aile du Tofu Maléfique"],
+            "Force": ["Oreilles du Tiwabbit", "Oreille du Grand Pa Wabbit"],
+            "Intelligence": ["Plume de Kwak", "Greu-Vette", "Greu-Vette vidée", "Goujon", "Goujon vidé"],
+            "Vie": ["Sang de Dragon Cochon", "Sang de Vampire"],
+            "Chance": ["Souris vertes", "Truite", "Truite vidé"],
+            "Résistance Neutre": ["Gelée à la fraise", "Gelée à la Menthe", "Gelée Bleutée"]
+        } 
+    },
+    "Petit Chacha Blanc": { 
+        imageName: "PetitChachaBlanc",
+        interval: 5, 
+        stats: ["Initiative"], 
+        food: { 
+            "Initiative": ["Viande", "Viande conservée"],
+        } 
+    },
+    "Petit Chienchien Noir": { 
+        imageName: "PetitChienchienNoir",
+        interval: 11, 
+        stats: ["% de Dommages"], 
+        food: { 
+            "% de Dommages": ["Poisson", "Poisson vidé"],
+        } 
+    },
+    "Croum": { 
+        imageName: "Croum",
+        interval: 5, 
+        stats: ["Résistance Air", "Résistance Eau", "Résistance Terre", "Résistance Feu", "Résistance Neutre"], 
+        food: { 
+            "Résistance Air": ["Lingot d'Or", "Aluminite"],
+            "Résistance Eau": ["Ebonite", "Kriptonite"],
+            "Résistance Terre": ["Magnésite", "Kobalite"],
+            "Résistance Feu": ["Bakélite", "Pyrute"],
+            "Résistance Neutre": ["Kouartz", "Rutile"]
+        } 
+    },
+    "Koalak Sanguin": { 
+        imageName: "Koalak Sanguin",
+        interval: 5, 
+        stats: ["Sagesse"], 
+        food: { 
+            "Sagesse": ["Boomerang du Koalak Sanguin", "Boomerang du Dok Alako", "Boomerang du Maître Koalak", "Boomerang du Warko Marron"],
+        } 
+    },
+    "Nomoon": { 
+        imageName: "Nomoon",
+        interval: 24, 
+        stats: ["Prospection"], 
+        food: { 
+            "Prospection": ["Fleur de Gloutovore", "Feuille de Fourbasse", "Pétale de Trukikol", "Tranche de Nodkoko"],
+        } 
+    },
+    "Péki": { 
+        imageName: "Peki",
+        interval: 3, 
+        stats: ["Vie"], 
+        food: { 
+            "Vie": ["Riz", "Graine de Pandouille", "Racine de Bulbiflore", "Racine de Bulbuisson", "Racine de Bulbambou", "Racine de Bulbig", "Fleur de Bulbiflore", "Feuille de Bulbuisson", "Pousses de Bulbambou", "Feuille de Bambouto", "Feuille de Bambouto Sacré", "Racine Magique de Bambouto", "Racine Magique de Bambouto Sacré"],
+        } 
+    },
+    "Vilain Petit Corbac": { 
+        imageName: "VilainPetitCorbac",
+        interval: 5, 
+        stats: ["Prospection"], 
+        food: { 
+            "Prospection": ["Os"],
+        } 
+    },
+    "Wabbit": { 
+        imageName: "Wabbit",
+        interval: 5, 
+        stats: ["Sagesse", "Chance", "Force", "Intelligence", "Agilité"], 
+        food: { 
+            "Sagesse": ["Cawotte", "Cuisse de Wabbit"],
+            "Chance": ["Tige de Pissenlit Diabolique", "Langue de Pissenlit Diabolique", "Feuille de Menthe Sauvage"],
+            "Force": ["Fruit de Palme", "Sève d'Abraknyde Retravaillée"],
+            "Intelligence": ["Bave de Rose Démoniaque", "Trèfle à 5 feuilles"],
+            "Agilité": ["Fleur de Blop Coco", "Fleur de Blop Reinette", "Fleur de Blop Griotte", "Fleur de Blop Indigo"],
+        } 
+    },
+};
+
+window.addEventListener('load', () => {
+    if ("Notification" in window) {
+        Notification.requestPermission();
+    }
+    loadTable();
+});
+
+const tbody = document.getElementById('breedingBody');
+
+// 2. Charger les données au démarrage
+window.addEventListener('load', loadTable);
+
+document.getElementById('addPetRow').addEventListener('click', () => {
+    addRow();
+    // On ne sauvegarde pas ici, on laisse les events s'en charger
+});
+
+function addRow(savedData = null) {
+    const card = document.createElement('div');
+    card.className = 'breeding-card';
+    card.innerHTML = `
+        <div class="breeding-card-header">
+            <img src="images/items/Familiers/default.png" class="breeding-icon" alt="">
+            <div class="breeding-title-group">
+                <select class="pet-select">
+                    <option value="">-- Choisir --</option>
+                    ${Object.keys(petData).map(name => `<option value="${name}">${name}</option>`).join('')}
+                </select>
+            </div>
+            <img src="images/trash.png" alt="Supprimer" class="breeding-btn-delete" title="Supprimer">
+        </div>
+
+        <div class="breeding-card-body">
+            <div class="breeding-input-group">
+                <label>Caractéristique & Nourriture</label>
+                <div class="breeding-row-inputs">
+                    <select class="stat-select" disabled><option>--</option></select>
+                    <select class="food-select" disabled><option>--</option></select>
+                </div>
+            </div>
+            
+            <div class="breeding-input-group">
+                <label>Dernier Repas</label>
+                <div class="breeding-feed-control">
+                    <input type="datetime-local" class="last-fed">
+                    <button class="breeding-btn-now" title="Nourrir maintenant">🍴</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="breeding-card-footer">
+            <div class="breeding-info">⏳ <span class="interval-display">0</span>h</div>
+            <div class="breeding-next">🔔 <strong class="next-fed">--</strong></div>
+        </div>
+    `;
+
+    tbody.appendChild(card);
+
+    const petSelect = card.querySelector('.pet-select');
+    const statSelect = card.querySelector('.stat-select');
+    const foodSelect = card.querySelector('.food-select');
+    const lastFedInput = card.querySelector('.last-fed');
+
+    // --- ÉVÉNEMENTS ---
+    petSelect.addEventListener('change', () => { 
+        updatePetInfo(card); 
+        saveTable(); 
+    });
+    statSelect.addEventListener('change', () => { 
+        updateFoodInfo(card); 
+        saveTable(); 
+    });
+    foodSelect.addEventListener('change', saveTable);
+    lastFedInput.addEventListener('change', () => { 
+        calculateNextMeal(card); 
+        saveTable(); 
+    });
+    
+    // Bouton Nourrir maintenant
+    card.querySelector('.breeding-btn-now').addEventListener('click', () => {
+        const now = new Date();
+        const offset = now.getTimezoneOffset() * 60000;
+        const localISOTime = (new Date(now - offset)).toISOString().slice(0, 16);
+        lastFedInput.value = localISOTime;
+        calculateNextMeal(card);
+        saveTable();
+        sortBreedingCards();
+    });
+
+    // Suppression (Correction du sélecteur)
+    card.querySelector('.breeding-btn-delete').addEventListener('click', () => { 
+        card.remove(); 
+        saveTable(); 
+    });
+
+    // --- CHARGEMENT DES DONNÉES ---
+    if (savedData) {
+        petSelect.value = savedData.pet || "";
+        updatePetInfo(card, savedData.stat);
+        updateFoodInfo(card, savedData.food); 
+        lastFedInput.value = savedData.lastFed || "";
+        calculateNextMeal(card);
+    }
+}
+
+function updatePetInfo(card, selectedStat = null) {
+    const petName = card.querySelector('.pet-select').value;
+    const petImg = card.querySelector('.breeding-icon');
+    const statSelect = card.querySelector('.stat-select');
+    const intervalDisp = card.querySelector('.interval-display');
+    
+    if (petName && petData[petName]) {
+        const data = petData[petName];
+        let fileName = data.imageName || petName;
+        
+        // CORRECTION : On définit la source ET on l'affiche
+        petImg.src = `images/items/Familiers/${encodeURIComponent(fileName)}.png`;
+        petImg.classList.add('is-loaded'); // On ajoute la classe pour le CSS
+        
+        intervalDisp.innerText = data.interval;
+        statSelect.disabled = false;
+        statSelect.innerHTML = data.stats.map(s => `<option value="${s}">${s}</option>`).join('');
+        
+        if (selectedStat) statSelect.value = selectedStat;
+        updateFoodInfo(card);
+    } else {
+        // CORRECTION : Si aucun familier n'est choisi ("-- Choisir --")
+        // On retire la source et on cache l'image
+        petImg.src = ""; // Vide la source
+        petImg.classList.remove('is-loaded'); // On retire la classe pour le CSS (elle disparaît)
+        
+        // Le reste de ton code...
+        // petImg.src = "images/items/Familiers/default.png"; // Enlève cette ligne si tu l'avais
+        statSelect.disabled = true;
+        statSelect.innerHTML = '<option>--</option>';
+    }
+}
+
+function updateFoodInfo(card, selectedFood = null) {
+    const petName = card.querySelector('.pet-select').value;
+    const statName = card.querySelector('.stat-select').value;
+    const foodSelect = card.querySelector('.food-select');
+
+    if (petName && statName && petData[petName].food[statName]) {
+        const foods = petData[petName].food[statName];
+        foodSelect.disabled = false;
+        foodSelect.innerHTML = foods.map(f => `<option value="${f}">${f}</option>`).join('');
+        if (selectedFood) foodSelect.value = selectedFood;
+    } else {
+        foodSelect.innerHTML = '<option>--</option>';
+        foodSelect.disabled = true;
+    }
+}
+
+function calculateNextMeal(card) {
+    const lastFedInput = card.querySelector('.last-fed');
+    const intervalDisp = card.querySelector('.interval-display');
+    const nextFedDisplay = card.querySelector('.next-fed');
+    const interval = parseInt(intervalDisp.innerText);
+
+    if (lastFedInput.value && interval > 0) {
+        let dateRepas = new Date(lastFedInput.value);
+        dateRepas.setHours(dateRepas.getHours() + interval);
+        
+        // --- LA LIGNE MANQUANTE ÉTAIT ICI ---
+        const options = { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' };
+        nextFedDisplay.innerText = dateRepas.toLocaleString('fr-FR', options);
+        // ------------------------------------
+
+        const maintenant = new Date();
+        const petName = card.querySelector('.pet-select').value;
+
+        if (dateRepas <= maintenant) {
+            nextFedDisplay.classList.add('ready');
+            
+            if (petName) {
+                sendPetNotification(petName);
+            }
+        } else {
+            nextFedDisplay.classList.remove('ready');
+            sentNotifications.delete(petName); 
+        }
+    } else {
+        nextFedDisplay.innerText = "--"; // Remise à zéro si pas de date
+    }
+}
+
+function saveTable() {
+    const cards = document.querySelectorAll('.breeding-card');
+    const data = Array.from(cards).map(card => {
+        const petVal = card.querySelector('.pet-select').value;
+        // On ne sauvegarde que si un familier est sélectionné pour éviter les cards vides
+        if (!petVal) return null; 
+
+        return {
+            pet: petVal,
+            stat: card.querySelector('.stat-select').value,
+            food: card.querySelector('.food-select').value,
+            lastFed: card.querySelector('.last-fed').value
+        };
+    }).filter(item => item !== null); // Supprime les entrées vides du tableau final
+
+    localStorage.setItem('dofusBreedingData', JSON.stringify(data));
+}
+
+function loadTable() {
+    const saved = localStorage.getItem('dofusBreedingData');
+    tbody.innerHTML = ""; // Vide le container avant de charger
+    if (saved) {
+        const data = JSON.parse(saved);
+        data.forEach(item => addRow(item));
+    }
+}
+
+// Vérification toutes les 30 secondes
+setInterval(() => {
+    const cards = document.querySelectorAll('.breeding-card');
+    cards.forEach(card => calculateNextMeal(card));
+    sortBreedingCards();
+}, 10000);
+
+// Stockage des notifications déjà envoyées pour ne pas répéter
+const sentNotifications = new Set();
+
+function sendPetNotification(petName) {
+    if (Notification.permission === "granted" && !sentNotifications.has(petName)) {
+        const notif = new Notification("Dofus Élevage", {
+            body: `C'est l'heure ! Votre ${petName} a faim. 🍴`,
+            icon: "images/LogoDR.png" // Ton logo pour la petite icône
+        });
+        const audio = new Audio('https://www.myinstants.com/media/sounds/dofus-notification.mp3'); 
+        audio.play();
+        
+        sentNotifications.add(petName); // Marque comme envoyé
+        
+        // On réinitialise après 10 minutes pour permettre une future notification si pas nourri
+        setTimeout(() => sentNotifications.delete(petName), 600000); 
+    }
+}
+
+function sortBreedingCards() {
+    const cards = Array.from(document.querySelectorAll('.breeding-card'));
+    
+    cards.sort((a, b) => {
+        const nextA = a.querySelector('.next-fed').innerText;
+        const nextB = b.querySelector('.next-fed').innerText;
+        const isReadyA = a.querySelector('.next-fed').classList.contains('ready');
+        const isReadyB = b.querySelector('.next-fed').classList.contains('ready');
+
+        // 1. Les familiers prêts (en vert) passent en premier
+        if (isReadyA && !isReadyB) return -1;
+        if (!isReadyA && isReadyB) return 1;
+
+        // 2. Si les deux sont prêts ou les deux attendent, on trie par chronologie
+        if (nextA === "--") return 1;
+        if (nextB === "--") return -1;
+
+        // Transformation du texte "29/03 23:45" en objet Date pour comparer
+        const parseDate = (txt) => {
+            const [day, month, time] = txt.split(/[\/\s]/);
+            const [hour, min] = time.split(':');
+            return new Date(2026, month - 1, day, hour, min);
+        };
+
+        return parseDate(nextA) - parseDate(nextB);
+    });
+
+    // On ré-insère les cartes dans le bon ordre dans le DOM
+    cards.forEach(card => tbody.appendChild(card));
+}
+</script>
+</body>
