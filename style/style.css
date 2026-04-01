@@ -165,71 +165,100 @@ header {
     background-color: #1c1715;
 }
 
-/* Page Skin spécifique */
-.skin-display {
+.section-title {
     text-align: center;
-    background: rgba(28, 23, 21, 0.6); /* Fond sombre semi-transparent */
-    padding: 40px;
-    border-radius: 20px;
-    margin-top: 40px;
+    color: #f0b200;
+    margin-bottom: 50px; /* Plus d'espace sous le titre */
+    font-size: clamp(1.8rem, 4vw, 2.5rem); /* Taille fluide */
+    font-weight: 800;
 }
 
-.skin-display h2 {
-    color:#ee8331;
-    font-weight: 800; 
-    letter-spacing: -0.5px; 
+/* La grille pour aligner les 3 cartes */
+.skin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Force 3 colonnes exactes */
+    gap: 25px;
+    max-width: 1200px; /* Largeur maximale pour que la grille ne s'étire pas trop */
+    margin: 0 auto; /* Centré dans le container */
+    align-items: start; /* Les cartes s'alignent par le haut */
 }
 
-.skin-display h3{
-    color:#f0b200;
-    font-weight: 500;
+@media (max-width: 900px) {
+    .skin-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px; /* Pour éviter que les cartes soient trop larges sur mobile */
+    }
 }
 
-.skin-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 25px; /* Bords arrondis comme demandé */
-    border: 3px solid #ee8331; /* Un petit rappel orange pour le cadre */
-    margin-bottom: 30px;
+/* Style de la carte */
+.skin-card {
+    background: rgba(28, 23, 21, 0.95);
+    border-radius: 25px;
+    padding: 30px;
+    border: 1px solid #333;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* La carte elle-même est flex */
+    flex-direction: column; /* Contenu vertical (titre, puis contenu) */
+    align-items: center; /* Tout aligner au centre horizontalement */
 }
 
-/* Grille des couleurs */
-.color-grid {
+.skin-card:hover {
+    transform: translateY(-8px);
+    border-color: #ee8331;
+    box-shadow: 0 10px 30px rgba(238, 131, 49, 0.3); /* Ombre orangée au survol */
+}
+
+.skin-card h3 {
+    color: #ee8331;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    width: 100%;
+}
+
+.card-content {
     display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 20px;
-    flex-wrap: wrap; /* Pour que ça passe sur deux lignes sur petit écran */
+    align-items: center; /* Centre verticalement les deux blocs */
+    justify-content: space-around; /* Espace bien réparti */
+    width: 100%; /* Occupe toute la largeur de la carte */
 }
 
-.color-item {
+.skin-img-uniform {
+    width: 200px; /* Taille fixe pour le conteneur */
+    height: 200px; /* Hauteur fixe pour le conteneur */
+    object-fit: contain; /* L'image s'inscrit dans le carré de 200x200 sans se déformer */
+    object-position: center; /* L'image est centrée dans son carré */
+    
+    /* Optionnel : un léger effet d'ombre pour le style Retro */
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+    border-radius: 15px; /* Un peu plus de rondeur pour les bords de l'image */
+}
+
+.color-palette-mini {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 12px;
 }
 
-.color-box {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    transition: transform 0.2s;
+.color-palette-mini .color-box {
+    width: 55px; /* Taille unifiée */
+    height: 55px; /* Taille unifiée */
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.1);
+    transition: all 0.2s ease;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2); /* Léger effet intérieur */
 }
 
-.color-box:hover {
-    transform: scale(1.1); /* Petit effet de zoom au survol */
+.color-palette-mini .color-box:hover {
+    transform: scale(1.12);
+    border-color: #f0b200; /* Bordure jaune au survol */
 }
 
-/* Zone de texte copiable */
-.hex-code {
-    background: #1c1715;
-    color:#f0b200;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-family: monospace; /* Police style "code" */
-    font-size: 0.9rem;
-    user-select: all; /* Permet de sélectionner tout le texte en un clic */
-    cursor: pointer; /* Change la flèche de la souris en petite main */
+/* Petit effet visuel pour confirmer le clic */
+.color-palette-mini .color-box:active {
+    transform: scale(0.95);
 }
 
 /* Style du parent Dropdown */
