@@ -3,21 +3,17 @@
 const currentPage = window.location.pathname.split("/").pop().replace(".html", "") || "index";
 const storageKey = `dofusCraftList_${currentPage}`;
 
-function copyToClipboard(text, element) {
-    // On utilise l'API Clipboard moderne
-    navigator.clipboard.writeText(text).then(() => {
-        // Optionnel : Petit feedback visuel
-        const originalText = element.innerText;
-        element.innerText = "Copié !";
-        element.style.color = "#2ecc71"; // Devient vert
-
-        // On remet le texte d'origine après 1 seconde
+function copyToClipboard(hex, element) {
+    navigator.clipboard.writeText(hex).then(() => {
+        // Optionnel : un petit effet visuel pour dire que c'est copié
+        const originalBg = element.style.borderColor;
+        element.style.borderColor = "#f0b200";
         setTimeout(() => {
-            element.innerText = originalText;
-            element.style.color = ""; // Remet la couleur du CSS
-        }, 1000);
-    }).catch(err => {
-        console.error("Erreur lors de la copie : ", err);
+            element.style.borderColor = originalBg;
+        }, 500);
+        
+        // On peut aussi afficher un petit message temporaire
+        console.log("Copié : " + hex);
     });
 }
 
